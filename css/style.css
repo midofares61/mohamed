@@ -6,6 +6,7 @@
 
 :root {
     --main-color: #2196f3;
+    --main-transition: 0.3s;
 }
 
 html {
@@ -63,10 +64,77 @@ ul {
     display: flex;
 }
 
-.header .main-nav li a {
+.header .main-nav>li>a {
     color: black;
     font-size: 18px;
     padding: 0 30px;
     height: 70px;
     position: relative;
+    display: flex;
+    align-items: center;
+    transition: var(--main-transition);
+    overflow: hidden;
+}
+
+.header .main-nav>li>a::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    top: 0;
+    left: -100%;
+    background-color: var(--main-color);
+    transition: var(--main-transition);
+}
+
+.header .main-nav>li>a:hover::before {
+    left: 0;
+}
+
+.header .main-nav>li>a:hover {
+    background-color: #f2f2f2;
+    color: var(--main-color);
+}
+
+.header .mega-menu {
+    position: absolute;
+    left: 0;
+    display: flex;
+    background-color: white;
+    width: 100%;
+    padding: 25px;
+    gap: 40px;
+    border-bottom: 3px solid var(--main-color);
+    z-index: -1;
+    opacity: 0;
+    top: calc(100% + 50px);
+    transition: var(--main-transition);
+
+}
+
+.menu-toggle {
+    opacity: 1 !important;
+    top: calc(100% + 1px) !important;
+    z-index: 100 !important;
+}
+
+.header .links {
+    min-width: 250px;
+    flex: 1;
+}
+
+.header .links li a {
+    color: var(--main-color);
+    font-size: 18px;
+    font-weight: bold;
+    padding: 15px;
+    display: block;
+}
+
+.header .links li:not(:last-child) {
+    border-bottom: 1px solid #ddd;
+}
+
+.header .links li a i {
+    margin-right: 10px;
 }
